@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loorio GTM</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="dot"></span> Loorio GTM</div>
+    <nav id="tabs">
+      <button data-tab="overview" class="active">Overview</button>
+      <button data-tab="approvals">Approvals <span id="badge-approvals" class="badge" hidden></span></button>
+      <button data-tab="creators">Creators</button>
+      <button data-tab="sequences">Sequences</button>
+      <button data-tab="inbox">Inbox</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tab-overview" class="tab">
+      <div id="setup" class="card"></div>
+      <div class="grid" id="stats"></div>
+      <div class="card">
+        <div class="row between"><h2>Worker</h2><span class="muted" id="window"></span></div>
+        <div id="jobs" class="jobs"></div>
+      </div>
+      <div class="card"><h2>Activity</h2><ul id="activity" class="feed"></ul></div>
+    </section>
+
+    <section id="tab-approvals" class="tab" hidden>
+      <div class="row between">
+        <h2>Waiting for your approval</h2>
+        <button id="approve-all" class="primary">Approve all</button>
+      </div>
+      <p class="muted">Edit anything, then approve. The first email sends in the next send slot; follow-ups go out automatically and stop the moment they reply.</p>
+      <div id="approvals"></div>
+    </section>
+
+    <section id="tab-creators" class="tab" hidden>
+      <div class="card">
+        <h2>Add creators</h2>
+        <p class="muted">One per line: TikTok/Instagram/YouTube profile URLs, <code>tiktok:@name</code>, <code>ig:name</code>, <code>yt:@name</code>, or a website.</p>
+        <textarea id="import-lines" rows="4" placeholder="https://www.tiktok.com/@studywithmaya&#10;ig:satmathguy&#10;yt:@collegeinfogeek"></textarea>
+        <div class="row"><button id="import" class="primary">Add to queue</button><span id="import-result" class="muted"></span></div>
+      </div>
+      <div class="row filters" id="creator-filters"></div>
+      <div id="creators"></div>
+    </section>
+
+    <section id="tab-sequences" class="tab" hidden>
+      <div class="row filters" id="sequence-filters"></div>
+      <div id="sequences"></div>
+    </section>
+
+    <section id="tab-inbox" class="tab" hidden>
+      <h2>Inbox triage</h2>
+      <p class="muted">Every new email is triaged; anything that needs a reply gets a draft in Gmail (you review and hit send).</p>
+      <div id="inbox"></div>
+    </section>
+  </main>
+
+  <dialog id="detail"><div id="detail-body"></div><form method="dialog"><button>Close</button></form></dialog>
+  <div id="toast" hidden></div>
+</body>
+</html>
